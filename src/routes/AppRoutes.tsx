@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import OtpValidationPage from '../pages/register/OtpValidationPage';
 import RegisterPage from '../pages/register/RegisterPage';
+import CesiumPage from '../pages/CesiumPage';
 
 
 export const AppRoutes = () => {
@@ -18,6 +19,8 @@ export const AppRoutes = () => {
 
         {/* Trang chính sau khi login (Ví dụ) */}
         <Route path="/dashboard" element={<div>Trang chủ Dashboard</div>} />
+
+        <Route path="/cesium" element={<CesiumPage/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import {
   TextField,
   Button,
@@ -21,12 +20,7 @@ import {
   LockOutlined,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import type { LoginData } from '../../../types/LoginData';
-
-const loginSchema = z.object({
-  email: z.string().email('Email không đúng định dạng'),
-  password: z.string().min(6, 'Mật khẩu phải từ 6 ký tự trở lên'),
-});
+import { loginSchema, type LoginData } from '../../../types/LoginData';
 
 
 interface LoginFormProps {
