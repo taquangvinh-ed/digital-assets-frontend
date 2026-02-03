@@ -20,16 +20,17 @@ import {
   EmailOutlined,
   LockOutlined,
 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import type { LoginData } from '../../../types/LoginData';
 
 const loginSchema = z.object({
   email: z.string().email('Email không đúng định dạng'),
   password: z.string().min(6, 'Mật khẩu phải từ 6 ký tự trở lên'),
 });
 
-type LoginFormData = z.infer<typeof loginSchema>;
 
 interface LoginFormProps {
-  onSubmit: (data: LoginFormData) => void;
+  onSubmit: (data: LoginData) => void;
   isLoading?: boolean;
   error?: string;
 }
@@ -41,7 +42,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading, error }) => 
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>({
+  } = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
   });
 
@@ -164,12 +165,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading, error }) => 
           </Button>
         </Box>
 
-        <Typography variant="body2" align="center" className="text-gray-500">
-          Chưa có tài khoản?{' '}
-          <span className="text-blue-600 font-bold cursor-pointer hover:text-blue-800 transition-colors">
-            Tạo tài khoản mới
-          </span>
-        </Typography>
+        <Typography variant="body2" align="center" className="mt-4">
+  Chưa có tài khoản?{' '}
+  <Link to="/register" className="text-indigo-600 font-bold hover:underline">
+    Đăng ký ngay
+  </Link>
+</Typography>
       </form>
     </Box>
   );
